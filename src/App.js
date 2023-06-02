@@ -3,8 +3,8 @@ import { useState } from 'react';
 function App() {
   const [weather, setWeather] = useState({});
   const [location, setLocation] = useState({
-    city: 'London',
-    country: 'England',
+    city: '',
+    country: '',
   });
   const [formVisible, setFormVisible] = useState(true);
 
@@ -33,6 +33,15 @@ function App() {
       setWeather(repsonseData);
       setFormVisible(false);
     }
+  };
+
+  const handleGoBack = () => {
+    setWeather({});
+    setLocation({
+      city: '',
+      country: '',
+    });
+    setFormVisible(false);
   };
 
   return (
@@ -69,7 +78,7 @@ function App() {
         </form>
       </section>
 
-      <section className={formVisible ? 'hidden' : 'center'}>
+      {/* <section className={formVisible && weather.length ? 'hidden' : 'center'}>
         <div className='weather-location'>
           <h3>
             {weather.name} - {weather.sys.country}
@@ -112,9 +121,13 @@ function App() {
           </div>
         </div>
 
-        <div>Humidity: {weather.main.humidity}</div>
-        <div>Pressure: {weather.main.pressure}</div>
-      </section>
+        <div className='weather-extras'>
+          <div>Humidity: {weather.main.humidity} g/kg</div>
+          <div>Pressure: {weather.main.pressure} hPa</div>
+        </div>
+
+        <button onClick={handleGoBack}>Go back</button>
+      </section> */}
     </div>
   );
 }

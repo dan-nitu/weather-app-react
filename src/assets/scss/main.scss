@@ -167,6 +167,12 @@ html {
       gap: 12px;
     }
   }
+
+  .weather-extras {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: solid 1px $mine-shaft;
+  }
 }
 
 .hidden {
