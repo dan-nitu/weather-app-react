@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import WeatherContext from '../context/WeatherContext';
 
 const WeatherResult = () => {
-  const { weather, setFormVisible, setWeather, setLocation } =
+  const { weather, formVisible, setFormVisible, setWeather, setLocation } =
     useContext(WeatherContext);
 
   const handleGoBack = () => {
@@ -11,7 +11,7 @@ const WeatherResult = () => {
     setLocation({ city: '', country: '' });
   };
 
-  if (JSON.stringify(weather) !== '{}') {
+  if (!formVisible) {
     return (
       <section>
         <div className='weather-location'>

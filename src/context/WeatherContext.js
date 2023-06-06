@@ -9,6 +9,14 @@ export const WeatherProvider = ({ children }) => {
     country: '',
   });
   const [formVisible, setFormVisible] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const showError = (message) => {
+    setErrorMessage(message);
+    setTimeout(() => {
+      setErrorMessage('');
+    }, 3000);
+  };
 
   return (
     <WeatherContext.Provider
@@ -19,6 +27,8 @@ export const WeatherProvider = ({ children }) => {
         setLocation,
         formVisible,
         setFormVisible,
+        errorMessage,
+        showError,
       }}
     >
       {children}

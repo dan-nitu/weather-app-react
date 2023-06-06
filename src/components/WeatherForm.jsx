@@ -2,8 +2,14 @@ import { useContext } from 'react';
 import WeatherContext from '../context/WeatherContext';
 
 const WeatherForm = () => {
-  const { location, setLocation, setWeather, formVisible, setFormVisible } =
-    useContext(WeatherContext);
+  const {
+    location,
+    setLocation,
+    setWeather,
+    formVisible,
+    setFormVisible,
+    showError,
+  } = useContext(WeatherContext);
 
   const { city, country } = location;
 
@@ -13,7 +19,7 @@ const WeatherForm = () => {
     e.preventDefault();
 
     if (city.trim() === '' || country.trim() === '') {
-      alert('fill');
+      showError('Please fill in the form');
     } else {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${apiKey}`
@@ -21,7 +27,7 @@ const WeatherForm = () => {
       const responseData = await response.json();
 
       if (responseData.cod === '404') {
-        console.log('404');
+        showError(`Invalid data! Couldn't find the specified city!`);
       } else {
         setWeather(responseData);
         setFormVisible(false);
