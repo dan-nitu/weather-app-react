@@ -1,6 +1,7 @@
 # Weather App
 
-## Built with React
+## Built with React (frontend)
+## API: api.openweathermap.org
 
 ---
 
